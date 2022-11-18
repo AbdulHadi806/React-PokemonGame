@@ -7,16 +7,18 @@ import Header from './components/header';
 import MainSection from './components/MainSection';
 import HeartPage from './components/heartPage';
 import PokemonDescription from './components/pokemonDescription';
-
-
+import SearchBar from './components/SearchBar';
 
 // importing redux components
 import { useDispatch } from "react-redux";
 
 // importing actions here
 import { getPokemonData } from './redux/actions';
+import ComparitionPage from './components/comparitionPage';
+import ProtectedRoutesDescription from './components/protectedRoutesDescription';
 
 function App() {
+  const [pokeWinner, setPokeWinner] = useState([])
   const [apiData, setApiData] = useState()
   const api = "https://pokeapi.co/api/v2/pokemon/";
   const dispatch = useDispatch()
@@ -45,9 +47,13 @@ function App() {
         <div className="App">
       <Header />    
       <Routes>
+        <Route path="/ComparitionPage" element={<ComparitionPage setPokeWinner = {setPokeWinner} pokeWinner = {pokeWinner}/>}/>
+        <Route element={<ProtectedRoutesDescription />}>
+        <Route path="/pokemonDescription" element={<PokemonDescription />}/>
+        </Route>
         <Route path="/" element = {<MainSection />} />
         <Route path="/HeartPage" element = {<HeartPage />} />
-        <Route path="/pokemonDescription" element={<PokemonDescription />}/>
+        <Route path="/SearchPage" element={<SearchBar />}/>
       </Routes>
       </div>
       </Router>
