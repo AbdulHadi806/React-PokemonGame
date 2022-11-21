@@ -1,5 +1,5 @@
 # This is a demo project to show my skills.
-This is a demo project which includes all my skills most importantly how I handle __deadlines__ and __problems__.
+This is a demo project which includes most my React skills most importantly it includes how I handle __problems__.
 # Technologies used
 * React.js
 * MUI
