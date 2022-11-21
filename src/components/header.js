@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from '@mui/icons-material/Search';
 
-
 export default function Header() {
   const AddToHeartItems = useSelector(state => state.addToHeart)
   const TotalCount = AddToHeartItems.length;
@@ -21,11 +20,14 @@ export default function Header() {
   return (
     <AppBar sx = {{mb: "100px"}}>
         <Container sx = {{py:2 }}>
+          
           <Grid container>
               <Grid item md = {10}>
+                
                 <Link to="/" style={{color: "#fff", textDecoration:"none"}}><Typography variant='h1' sx = {{fontSize:"25px"}}>Pokemon Go</Typography></Link>
               </Grid>
               <Grid item md = {2}>
+                
               <Button sx={{ p: "0" }}>
           <Link to="/SearchPage">
           <SearchIcon sx = {{color: "#000"}}/>            
@@ -41,6 +43,7 @@ export default function Header() {
             >
               {TotalCount}
             </Typography>
+
           </Link>
         </Button>
         

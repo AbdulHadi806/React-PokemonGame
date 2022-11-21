@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 // importing redux components
 import { useDispatch, useSelector } from "react-redux";
@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 //importing actions
-import { AddToHeart, searchInputItm, pokemonsDetails } from '../redux/actions';
+import { AddToHeart, searchInputItm, pokemonsDetails, pokemonComparition } from '../redux/actions';
 
 
+// importing MUI components
 import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardContent, CardMedia, Box, Typography, Button, CardActionArea, CardActions } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState()
 
@@ -44,6 +46,9 @@ export default function SearchBar() {
       setSearchInput("")
     }
   }
+  const pokemonComparitionHandler = (data) => {
+    dispatch(pokemonComparition(data))
+  }
   return (
     <>
       <Container sx={{ textAlign: "center", mt: '120px' }}>
@@ -56,7 +61,10 @@ export default function SearchBar() {
             </InputAdornment>
           )
         }} />
+
         {SearchItemsData && SearchItemsData.length !== 0 ? "" : <Typography>Find Your Pokemon Here!</Typography>}
+
+
         <Grid container sx={{ justifyContent: "center" }}>
           {sortSearchtems && sortSearchtems.map((data) => {
             return (
@@ -88,6 +96,13 @@ export default function SearchBar() {
                       },
                     }} onClick={(e) => { e.preventDefault(); addToHeartHandler(data) }} size="small" color="primary">
                       Add to Favorite
+                    </Button>
+                    <Button sx={{
+                      bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "100px", color: "#fff", ':hover': {
+                        bgcolor: '#212121',
+                      },
+                    }} onClick={(e) => { e.preventDefault(); pokemonComparitionHandler(data) }} size="small" color="primary">
+                      Compare
                     </Button>
                   </CardActions>
                 </Card>

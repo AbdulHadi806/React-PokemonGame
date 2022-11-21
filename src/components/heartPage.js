@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // import actions
-import { removeFromHeart,pokemonsDetails } from '../redux/actions';
+import { removeFromHeart,pokemonsDetails,pokemonComparition } from '../redux/actions';
 
 export default function HeartPage() {
     const [itemData, setItemData] = useState([])
@@ -26,6 +26,9 @@ export default function HeartPage() {
   const pokemonsDetailsHandler = (data) => {
     dispatch(pokemonsDetails(data))
  }
+ const pokemonComparitionHandler = (data) => {
+    dispatch(pokemonComparition(data))
+  }
   return (
     <>
     <Container sx={{ mt: "100px" }}>
@@ -34,37 +37,45 @@ export default function HeartPage() {
       <Grid container>
                     {sortedAddToHeartItems.map((data) => {
                         return (
-                            <Grid key={data.id}  item md={3} sx = {{py:2}}>
-                                <Card sx={{ maxWidth: 250 }}>
-                                    <CardActionArea sx ={{bgcolor: "rgba(128, 79, 79, 0.1)"}} onClick={(e)=>{e.preventDefault();pokemonsDetailsHandler(data)}}>
-                                        <Link to="/pokemonDescription">
-                                        <CardMedia
-                                            component="img"
-                                            height="140"
-                                            image={data.sprites.front_shiny}
-                                            style={{objectFit:"contain", width: "150px", height:"200px", margin: "0 auto"}}
-                                            alt="green iguana"
-                                        />
-                                        </Link>
-                                        </CardActionArea>
-                                        <CardContent sx = {{pb: "3px"}}>
-                                            <Typography sx ={{textTransform:"capitalize "}} gutterBottom variant="h5" component="div">
-                                                {data.name}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                            Base_experience: {data.base_experience}
-                                            </Typography>
-                                        </CardContent>
-                                    <CardActions sx = {{pb:"20px"}}>
-                                        <Button sx = {{bgcolor:"#000",fontSize:"11px",fontWeight:"700",height:"33px",width:"127px", color:"#fff", ':hover': {
-                      bgcolor: '#212121', 
-                    },
-                }} onClick={(e)=> {e.preventDefault();removeFromHeartHandler(data);}} size="small" color="primary">
-                                            Remove
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
+                            <Grid key={data.id} item md={3} sx={{ py: 2 }}>
+                <Card sx={{ maxWidth: 250 }}>
+                  <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }} onClick={(e) => { e.preventDefault(); pokemonsDetailsHandler(data) }}>
+                    <Link to="/pokemonDescription">
+                      <CardMedia
+                        component="img"
+                        height="140"
+                        image={data.sprites.front_shiny}
+                        style={{ objectFit: "contain", width: "150px", height: "200px", margin: "0 auto" }}
+                        alt="green iguana"
+                      />
+                    </Link>
+                  </CardActionArea>
+                  <CardContent sx={{ pb: "3px" }}>
+                    <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
+                      {data.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      Base_experience: {data.base_experience}
+                    </Typography>
+                  </CardContent>
+                  <CardActions sx={{ pb: "20px" }}>
+                    <Button sx={{
+                      bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "127px", color: "#fff", ':hover': {
+                        bgcolor: '#212121',
+                      },
+                    }} onClick={(e) => { e.preventDefault(); removeFromHeartHandler(data) }} size="small" color="primary">
+                      Remove
+                    </Button>
+                    <Button sx={{
+                      bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "100px", color: "#fff", ':hover': {
+                        bgcolor: '#212121',
+                      },
+                    }} onClick={(e) => { e.preventDefault(); pokemonComparitionHandler(data) }} size="small" color="primary">
+                      Compare
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
                         )
                     })}
                 </Grid>

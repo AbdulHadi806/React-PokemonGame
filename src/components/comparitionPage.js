@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { AddToHeart, pokemonsDetails, pokemonComparitionDeleter } from '../redux/actions';
 
 export default function ComparitionPage({pokeWinner, setPokeWinner}) {
+  const [error, setError] = useState(false)
   const pokemonCompareData = useSelector(state => state.pokemonCompare)
   const comparePoke = (e) => {
     e.preventDefault()
@@ -24,6 +25,7 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
         return setPokeWinner([pokemonCompareData[i+ 1]])
       }
       else if (pokemonCompareData[i].base_experience == pokemonCompareData[i + 1].base_experience){
+        setError(true)
         return setPokeWinner([""])
       }
       else {
@@ -41,6 +43,7 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
   const pokemonComparitionDeleterHandler = (data) => {
     dispatch(pokemonComparitionDeleter(data))
     setPokeWinner([])
+    setError(false)
   }
   return (
     <>
@@ -92,8 +95,9 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
           })} 
         </Grid>
         {pokeWinner.length > 0 ? <Typography sx = {{py:"20px"}}>The Winner is</Typography>: ""}
+        {error? <Typography>None because both have equal power</Typography> : ""}
         <Box sx ={{display:"flex",justifyContent:"center"}}>
-          {pokeWinner && pokeWinner.map(d => {
+          {error==false ? pokeWinner && pokeWinner.map(d => {
             return (
           <Card key={d.id} sx={{ maxWidth: 330 }}>
                   <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }}>
@@ -119,7 +123,8 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
                   </CardActions>
                 </Card>
             )
-          })}
+          }):""}
+          
           </Box>
       </Container>
     </>
