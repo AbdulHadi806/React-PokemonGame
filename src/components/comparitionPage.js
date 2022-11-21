@@ -91,7 +91,7 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
             )
           })} 
         </Grid>
-        {pokeWinner.length > 0 ? <Typography sx = {{py:"20px"}}>This Has More Power</Typography>: ""}
+        {pokeWinner.length > 0 ? <Typography sx = {{py:"20px"}}>The Winner is</Typography>: ""}
         <Box sx ={{display:"flex",justifyContent:"center"}}>
           {pokeWinner && pokeWinner.map(d => {
             return (
