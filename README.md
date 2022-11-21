@@ -1,4 +1,5 @@
 # This is a demo project to show my skills.
+This is a demo project which includes all my skills most importantly how I handle deadlines and problems.
 # Technologies used
 * React.js
 * MUI
