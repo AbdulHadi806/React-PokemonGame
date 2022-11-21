@@ -52,6 +52,7 @@ export default function SearchBar() {
   }
   return (
     <>
+    
       <Container sx={{ textAlign: "center" }}>
         <TextField type="text" placeholder="Search Pokemon By Name" value={searchInput} onChange={handleChange} sx={{ width: "500px", pt: "130px" }} InputProps={{
           endAdornment: (
@@ -64,10 +65,13 @@ export default function SearchBar() {
         }} />
 
         {SearchItemsData && SearchItemsData.length !== 0 ? "" : <Typography>Find Your Pokemon Here!</Typography>}
-        <Tooltip title="Compare" placement="top-end" sx={{ display: "block" }}>
+      
+        <Grid container sx={{ justifyContent: "center" }}>
+        <Grid item md = {12}>
+        <Tooltip title="Compare"  >
           <Link to="/ComparitionPage" ><CompareArrowsIcon /></Link>
         </Tooltip>
-        <Grid container sx={{ justifyContent: "center" }}>
+        </Grid>
           {sortSearchtems && sortSearchtems.map((data) => {
             return (
               <Grid key={data.id} item md={3} sx={{ py: 2 }}>
