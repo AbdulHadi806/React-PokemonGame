@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 // importing actions
 import { AddToHeart, pokemonsDetails, pokemonComparitionDeleter } from '../redux/actions';
 
-export default function ComparitionPage({pokeWinner, setPokeWinner}) {
+export default function ComparitionPage() {
+  const [pokeWinner, setPokeWinner] = useState([])
   const [error, setError] = useState(false)
   const pokemonCompareData = useSelector(state => state.pokemonCompare)
   const comparePoke = (e) => {
@@ -48,7 +49,7 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
   return (
     <>
       <Container sx={{ textAlign: "center", mt: '120px', mb:"30px" }}>
-        {pokemonCompareData.length <= 1 ? <Typography variant='h6'>Please First Select Two Pokemons to Compare</Typography> : <Button onClick={comparePoke}>Compare</Button>}
+        {pokemonCompareData.length <= 1 ? <Typography variant='h6'>Please First Select Two Pokemons to Compare</Typography> : <Button sx ={{color: "#000"}} onClick={comparePoke}>Compare</Button>}
         <Grid container sx={{ justifyContent: "center" }}>
           {pokemonCompareData && pokemonCompareData.map((data) => {
             return (
@@ -100,7 +101,7 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
           {error==false ? pokeWinner && pokeWinner.map(d => {
             return (
           <Card key={d.id}>
-                  <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }}>
+                  <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }} onClick={(e) => { e.preventDefault(); pokemonsDetailsHandler(d) }}>
                     <Link to="/pokemonDescription">
                       <CardMedia
                         component="img"

@@ -18,7 +18,6 @@ import ComparitionPage from './components/comparitionPage';
 import ProtectedRoutesDescription from './components/protectedRoutesDescription';
 
 function App() {
-  const [pokeWinner, setPokeWinner] = useState([])
   const [apiData, setApiData] = useState()
   const api = "https://pokeapi.co/api/v2/pokemon/";
   const dispatch = useDispatch()
@@ -47,7 +46,7 @@ function App() {
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/ComparitionPage" element={<ComparitionPage setPokeWinner={setPokeWinner} pokeWinner={pokeWinner} />} />
+          <Route path="/ComparitionPage" element={<ComparitionPage />} />
           <Route element={<ProtectedRoutesDescription />}>
             <Route path="/pokemonDescription" element={<PokemonDescription />} />
           </Route>

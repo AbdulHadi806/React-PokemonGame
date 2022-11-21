@@ -64,7 +64,7 @@ export default function SearchBar() {
         }} />
 
         {SearchItemsData && SearchItemsData.length !== 0 ? "" : <Typography>Find Your Pokemon Here!</Typography>}
-        <Link to="/ComparitionPage"><CompareArrowsIcon /></Link>
+        <Link to="/ComparitionPage" style = {{display:"block"}}><CompareArrowsIcon /></Link>
         <Grid container sx={{ justifyContent: "center" }}>
           {sortSearchtems && sortSearchtems.map((data) => {
             return (
