@@ -11,6 +11,9 @@ import { Link } from "react-router-dom";
 // importing actions
 import { AddToHeart, pokemonsDetails, pokemonComparitionDeleter } from '../redux/actions';
 
+// Reusable components
+import ReusableComponent from "./reUsableComp"
+
 export default function ComparitionPage() {
   const [pokeWinner, setPokeWinner] = useState([])
   const [error, setError] = useState(false)
@@ -66,14 +69,7 @@ export default function ComparitionPage() {
                       />
                     </Link>
                   </CardActionArea>
-                  <CardContent sx={{ pb: "3px" }}>
-                    <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
-                      {data.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Base_experience: {data.base_experience}
-                    </Typography>
-                  </CardContent>
+                  <ReusableComponent data = {data} />
                   <CardActions sx={{ pb: "20px" }}>
                     <Button sx={{
                       bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "127px", color: "#fff", ':hover': {

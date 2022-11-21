@@ -21,13 +21,8 @@ export default function Reducer(state = initialState, action) {
             if (isItem) {
                 return {
                     ...state,
-                    addToHeart: state.addToHeart.map(item => {
-                        if (item.id === action.payload.id) {
-                            return { ...item }
-                        } else {
-                            return item
-                        }
-                    })
+                    addToHeart: state.addToHeart
+            
                 }
             }
             else {
@@ -51,12 +46,12 @@ export default function Reducer(state = initialState, action) {
             }
         case POKEMONCOMPARITION:
             const item = state.pokemonCompare.find(ci => ci.id === action.payload.id)
-            if (item && state.pokemonCompare.length < 2) {
+            if (item) {
                 return {
                     ...state,
                     pokemonCompare: state.pokemonCompare.map(item => {
-                        if (item.id === action.payload.id) {
-                            return { ...item }
+                        if (item.id === action.payload.id && state.pokemonCompare.length < 2) {
+                            return  item
                         } else {
                             return item
                         }

@@ -11,12 +11,15 @@ import { AddToHeart, searchInputItm, pokemonsDetails, pokemonComparition } from 
 
 
 // importing MUI components
-import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardContent, CardMedia, Tooltip, Typography, Button, CardActionArea, CardActions } from "@mui/material";
+import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardMedia, Tooltip, Typography, Button, CardActionArea, CardActions } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
+// Reusable components
+import ReusableComponent from "./reUsableComp"
+
 export default function SearchBar() {
-  const [searchInput, setSearchInput] = useState()
+  const [searchInput, setSearchInput] = useState("")
 
   const pokemonsDataItems = useSelector(state => state.pokemonsData)
   const SearchItemsData = useSelector(state => state.SearchInputItems)
@@ -87,14 +90,7 @@ export default function SearchBar() {
                       />
                     </Link>
                   </CardActionArea>
-                  <CardContent sx={{ pb: "3px" }}>
-                    <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
-                      {data.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Base_experience: {data.base_experience}
-                    </Typography>
-                  </CardContent>
+                  <ReusableComponent data = {data}/>
                   <CardActions sx={{ pb: "20px" }}>
                     <Button sx={{
                       bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "127px", color: "#fff", ':hover': {
@@ -120,4 +116,3 @@ export default function SearchBar() {
     </>
   )
 }
-

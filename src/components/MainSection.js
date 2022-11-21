@@ -7,11 +7,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
 // importing MUI components
-import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions, Tooltip } from "@mui/material";
+import { Container, Grid, Card, CardMedia, Button, CardActionArea, CardActions, Tooltip } from "@mui/material";
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 //importing actions
 import { AddToHeart, pokemonsDetails, pokemonComparition } from '../redux/actions';
+
+// reusable compoenents
+import ReusableComponent from "./reUsableComp"
 
 
 export default function MainSection() {
@@ -50,14 +53,7 @@ export default function MainSection() {
                                             />
                                         </Link>
                                     </CardActionArea>
-                                    <CardContent sx={{ pb: "3px" }}>
-                                        <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
-                                            {data.name}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            Base_experience: {data.base_experience}
-                                        </Typography>
-                                    </CardContent>
+                                   <ReusableComponent data = {data}/>
                                     <CardActions sx={{ pb: "20px" }}>
                                         <Button sx={{
                                             bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "127px", color: "#fff", ':hover': {

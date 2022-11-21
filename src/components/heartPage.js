@@ -1,6 +1,11 @@
 import React from 'react'
 
-import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions, Tooltip } from "@mui/material";
+
+// Reusable components
+import ReusableComponent from "./reUsableComp"
+
+// MUI here
+import { Container, Grid, Card, CardMedia, Typography, Button, CardActionArea, CardActions, Tooltip } from "@mui/material";
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 // importing react-router components
 import { Link } from "react-router-dom";
@@ -32,7 +37,7 @@ export default function HeartPage() {
     <>
       <Container sx={{ mt: "100px" }}>
         <Typography variant='h2' sx={{ textAlign: "center", fontSize: "28px" }}>{AddToHeartItems.length == 0 ? "Currently You Have No Favourate Pokemons" : "Your Favorite Pokemons are"}</Typography>
-        {AddToHeartItems.length == 0 ? <Typography variant='h3' sx={{ textAlign: "center", fontSize: "20px", pt: "28px" }}>Add Pokemons To View List</Typography> : ""}
+        {AddToHeartItems.length === 0 ? <Typography variant='h3' sx={{ textAlign: "center", fontSize: "20px", pt: "28px" }}>Add Pokemons To View List</Typography> : ""}
         <Tooltip title="Compare" placement="top-end">
           <Link to="/ComparitionPage" ><CompareArrowsIcon /></Link>
         </Tooltip>
@@ -52,14 +57,7 @@ export default function HeartPage() {
                       />
                     </Link>
                   </CardActionArea>
-                  <CardContent sx={{ pb: "3px" }}>
-                    <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
-                      {data.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Base_experience: {data.base_experience}
-                    </Typography>
-                  </CardContent>
+                  <ReusableComponent data = {data}/>
                   <CardActions sx={{ pb: "20px" }}>
                     <Button sx={{
                       bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "127px", color: "#fff", ':hover': {

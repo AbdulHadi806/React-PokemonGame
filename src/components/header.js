@@ -1,7 +1,7 @@
 import React from 'react'
 
 // importing MUI compoenents here
-import { Container, Grid, Typography, AppBar, Button } from "@mui/material";
+import { Container, Grid, Typography, AppBar, Button,Tooltip } from "@mui/material";
 
 // importing react-router components
 import { Link } from "react-router-dom";
@@ -23,8 +23,10 @@ export default function Header() {
 
         <Grid container>
           <Grid item md={10}>
+          <Tooltip title="Home" placement="top-start">
+          <Link to="/" style={{ color: "#fff", textDecoration: "none" }}><Typography variant='h1' sx={{ fontSize: "25px" }}>Pokemon Go</Typography></Link>
 
-            <Link to="/" style={{ color: "#fff", textDecoration: "none" }}><Typography variant='h1' sx={{ fontSize: "25px" }}>Pokemon Go</Typography></Link>
+          </Tooltip>
           </Grid>
           <Grid item md={2}>
 
