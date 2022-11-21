@@ -13,6 +13,7 @@ import { AddToHeart, searchInputItm, pokemonsDetails, pokemonComparition } from 
 // importing MUI components
 import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardContent, CardMedia, Box, Typography, Button, CardActionArea, CardActions } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 export default function SearchBar() {
   const [searchInput, setSearchInput] = useState()
@@ -63,8 +64,7 @@ export default function SearchBar() {
         }} />
 
         {SearchItemsData && SearchItemsData.length !== 0 ? "" : <Typography>Find Your Pokemon Here!</Typography>}
-
-
+        <Link to="/ComparitionPage"><CompareArrowsIcon /></Link>
         <Grid container sx={{ justifyContent: "center" }}>
           {sortSearchtems && sortSearchtems.map((data) => {
             return (

@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -43,20 +43,20 @@ function App() {
   }, [])
   dispatch(getPokemonData(apiData))
   return (
-      <Router>    
-        <div className="App">
-      <Header />    
-      <Routes>
-        <Route path="/ComparitionPage" element={<ComparitionPage setPokeWinner = {setPokeWinner} pokeWinner = {pokeWinner}/>}/>
-        <Route element={<ProtectedRoutesDescription />}>
-        <Route path="/pokemonDescription" element={<PokemonDescription />}/>
-        </Route>
-        <Route path="/" element = {<MainSection />} />
-        <Route path="/HeartPage" element = {<HeartPage />} />
-        <Route path="/SearchPage" element={<SearchBar />}/>
-      </Routes>
+    <Router>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/ComparitionPage" element={<ComparitionPage setPokeWinner={setPokeWinner} pokeWinner={pokeWinner} />} />
+          <Route element={<ProtectedRoutesDescription />}>
+            <Route path="/pokemonDescription" element={<PokemonDescription />} />
+          </Route>
+          <Route path="/" element={<MainSection />} />
+          <Route path="/HeartPage" element={<HeartPage />} />
+          <Route path="/SearchPage" element={<SearchBar />} />
+        </Routes>
       </div>
-      </Router>
+    </Router>
   );
 }
 

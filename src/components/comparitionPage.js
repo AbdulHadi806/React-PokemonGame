@@ -95,11 +95,11 @@ export default function ComparitionPage({pokeWinner, setPokeWinner}) {
           })} 
         </Grid>
         {pokeWinner.length > 0 ? <Typography sx = {{py:"20px"}}>The Winner is</Typography>: ""}
-        {error? <Typography>None because both have equal power</Typography> : ""}
+        {error? <Typography>None Because Both Have Equal Base Power</Typography> : ""}
         <Box sx ={{display:"flex",justifyContent:"center"}}>
           {error==false ? pokeWinner && pokeWinner.map(d => {
             return (
-          <Card key={d.id} sx={{ maxWidth: 330 }}>
+          <Card key={d.id}>
                   <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }}>
                     <Link to="/pokemonDescription">
                       <CardMedia

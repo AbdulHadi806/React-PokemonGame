@@ -1,7 +1,7 @@
-import React,{useEffect, useState} from 'react'
+import React from 'react'
 
 import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions } from "@mui/material";
-
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 // importing react-router components
 import { Link } from "react-router-dom";
 
@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromHeart,pokemonsDetails,pokemonComparition } from '../redux/actions';
 
 export default function HeartPage() {
-    const [itemData, setItemData] = useState([])
   const AddToHeartItems = useSelector(state => state.addToHeart)
   let sortedAddToHeartItems;
   const sortHeartItemsHandler = () => {
@@ -34,6 +33,7 @@ export default function HeartPage() {
     <Container sx={{ mt: "100px" }}>
       <Typography variant='h2' sx = {{textAlign:"center", fontSize:"28px"}}>{AddToHeartItems.length == 0 ? "Currently You Have No Favourate Pokemons":"Your Favorite Pokemons are"}</Typography>
       {AddToHeartItems.length == 0? <Typography variant='h3' sx = {{textAlign:"center", fontSize:"20px",pt:"28px"}}>Add Pokemons To View List</Typography>: ""}
+      <Link to="/ComparitionPage"><CompareArrowsIcon /></Link>
       <Grid container>
                     {sortedAddToHeartItems.map((data) => {
                         return (
