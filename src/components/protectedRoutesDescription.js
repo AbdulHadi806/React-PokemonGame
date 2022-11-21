@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 // importing Redux
 import { useSelector } from 'react-redux';
@@ -10,8 +10,8 @@ export default function ProtectedRoutesDescription() {
     const navigate = useNavigate()
     const PokemonLength = pokemonsItemsDetails.length
     useEffect(() => {
-        if(PokemonLength <= 0) {
-            navigate('/', {replace: true})
+        if (PokemonLength <= 0) {
+            navigate('/', { replace: true })
         }
     }, [])
 

@@ -1,4 +1,4 @@
-import {GETPOKEMONDATA,ADDTOHEART,REMOVEFROMHEART,POKEMONDETAILS,SEARCHINPUTIEMS,POKEMONCOMPARITION,REMOVECOMPARESELECTION} from "../redux/type.js"
+import { GETPOKEMONDATA, ADDTOHEART, REMOVEFROMHEART, POKEMONDETAILS, SEARCHINPUTIEMS, POKEMONCOMPARITION, REMOVECOMPARESELECTION } from "../redux/type.js"
 
 
 const initialState = {
@@ -63,17 +63,17 @@ export default function Reducer(state = initialState, action) {
                     })
                 }
             }
-            else if(state.pokemonCompare.length < 2){
+            else if (state.pokemonCompare.length < 2) {
                 return {
                     ...state,
                     pokemonCompare: [...state.pokemonCompare, { ...action.payload }]
                 }
             }
-            case REMOVECOMPARESELECTION:
-                return {
-                    ...state,
-                    pokemonCompare: state.pokemonCompare.filter((item) => item.id !== action.payload.id)
-                }
+        case REMOVECOMPARESELECTION:
+            return {
+                ...state,
+                pokemonCompare: state.pokemonCompare.filter((item) => item.id !== action.payload.id)
+            }
 
     }
 }

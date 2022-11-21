@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 // importing MUI components
 import { Container, Grid, Card, CardContent, CardMedia, Typography, Box, Button, ListItem, List, CardActions } from "@mui/material";
@@ -20,7 +20,7 @@ export default function PokemonDescription() {
     dispatch(AddToHeart(data))
   }
   return (
-    <Container sx={{ mt: 21, mb: '197px' }}>
+    <Container sx={{ mt: 21, mt: '195px' }}>
       <Typography variant="h3" textAlign={"center"}>
         Latest Collection
       </Typography>
@@ -41,22 +41,22 @@ export default function PokemonDescription() {
                     <Typography gutterBottom variant="h4" component="div" sx={{ textTransform: "capitalize" }}>
                       {data.name}
                     </Typography>
-                      <Button sx = {{color: "#000"}} onClick={handleClick}>Change Details</Button>
-                    {active ? "":  <Typography variant='h5'>Top Moves Of {data.name} are:</Typography>}
+                    <Button sx={{ color: "#000" }} onClick={handleClick}>Change Details</Button>
+                    {active ? "" : <Typography variant='h5'>Top Moves Of {data.name} are:</Typography>}
                     {active ? <>
                       <Typography variant="body2" color="text.secondary">
-                                            Base_experience: {data.base_experience}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                            Normal abilities: {data && data.abilities.map(i => {
-                                              return (
-                                                <>
-                                                 { i.ability.name + ", "}</>
-                                              )
-                                            })}
-                                            </Typography>
-                                            </>: <Box Container sx={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start" }}>
-                                          
+                        Base_experience: {data.base_experience}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        Normal abilities: {data && data.abilities.map(i => {
+                          return (
+                            <>
+                              {i.ability.name + ", "}</>
+                          )
+                        })}
+                      </Typography>
+                    </> : <Box Container sx={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start" }}>
+
                       {data.moves.map(item => {
                         return (
                           <Box key={Math.random() * 2} sx={{ display: "flex" }}>

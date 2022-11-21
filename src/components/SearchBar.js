@@ -11,7 +11,7 @@ import { AddToHeart, searchInputItm, pokemonsDetails, pokemonComparition } from 
 
 
 // importing MUI components
-import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardContent, CardMedia, Box, Typography, Button, CardActionArea, CardActions } from "@mui/material";
+import { Container, IconButton, InputAdornment, TextField, Grid, Card, CardContent, CardMedia, Tooltip, Typography, Button, CardActionArea, CardActions } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
@@ -52,8 +52,8 @@ export default function SearchBar() {
   }
   return (
     <>
-      <Container sx={{ textAlign: "center", mt: '120px' }}>
-        <TextField type="text" placeholder="Search Pokemon By Name" value={searchInput} onChange={handleChange} sx={{ width: "500px", p: "6px" }} InputProps={{
+      <Container sx={{ textAlign: "center" }}>
+        <TextField type="text" placeholder="Search Pokemon By Name" value={searchInput} onChange={handleChange} sx={{ width: "500px", pt: "130px" }} InputProps={{
           endAdornment: (
             <InputAdornment>
               <IconButton onClick={searchInputHandler}>
@@ -64,7 +64,9 @@ export default function SearchBar() {
         }} />
 
         {SearchItemsData && SearchItemsData.length !== 0 ? "" : <Typography>Find Your Pokemon Here!</Typography>}
-        <Link to="/ComparitionPage" style = {{display:"block"}}><CompareArrowsIcon /></Link>
+        <Tooltip title="Compare" placement="top-end" sx={{ display: "block" }}>
+          <Link to="/ComparitionPage" ><CompareArrowsIcon /></Link>
+        </Tooltip>
         <Grid container sx={{ justifyContent: "center" }}>
           {sortSearchtems && sortSearchtems.map((data) => {
             return (

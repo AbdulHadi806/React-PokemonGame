@@ -1,6 +1,6 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 
-import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions,Box } from "@mui/material";
+import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions, Box } from "@mui/material";
 
 // importing redux components
 import { useDispatch, useSelector } from "react-redux";
@@ -23,9 +23,9 @@ export default function ComparitionPage() {
         return setPokeWinner([pokemonCompareData[i]])
       }
       else if (pokemonCompareData[i].base_experience < pokemonCompareData[i + 1].base_experience) {
-        return setPokeWinner([pokemonCompareData[i+ 1]])
+        return setPokeWinner([pokemonCompareData[i + 1]])
       }
-      else if (pokemonCompareData[i].base_experience == pokemonCompareData[i + 1].base_experience){
+      else if (pokemonCompareData[i].base_experience == pokemonCompareData[i + 1].base_experience) {
         setError(true)
         return setPokeWinner([""])
       }
@@ -48,8 +48,8 @@ export default function ComparitionPage() {
   }
   return (
     <>
-      <Container sx={{ textAlign: "center", mt: '120px', mb:"30px" }}>
-        {pokemonCompareData.length <= 1 ? <Typography variant='h6'>Please First Select Two Pokemons to Compare</Typography> : <Button sx ={{color: "#000"}} onClick={comparePoke}>Compare</Button>}
+      <Container sx={{ textAlign: "center", mt: '120px', mb: "30px" }}>
+        {pokemonCompareData.length <= 1 ? <Typography variant='h6'>Please First Select Two Pokemons to Compare</Typography> : <Button sx={{ color: "#000" }} onClick={comparePoke}>Compare</Button>}
         <Grid container sx={{ justifyContent: "center" }}>
           {pokemonCompareData && pokemonCompareData.map((data) => {
             return (
@@ -93,40 +93,40 @@ export default function ComparitionPage() {
                 </Card>
               </Grid>
             )
-          })} 
+          })}
         </Grid>
-        {pokeWinner.length > 0 ? <Typography sx = {{py:"20px"}}>The Winner is</Typography>: ""}
-        {error? <Typography>None Because Both Have Equal Base Power</Typography> : ""}
-        <Box sx ={{display:"flex",justifyContent:"center"}}>
-          {error==false ? pokeWinner && pokeWinner.map(d => {
+        {pokeWinner.length > 0 ? <Typography sx={{ py: "20px" }}>The Winner is</Typography> : ""}
+        {error ? <Typography>None Because Both Have Equal Base_experience</Typography> : ""}
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          {error == false ? pokeWinner && pokeWinner.map(d => {
             return (
-          <Card key={d.id}>
-                  <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }} onClick={(e) => { e.preventDefault(); pokemonsDetailsHandler(d) }}>
-                    <Link to="/pokemonDescription">
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={d.sprites.front_shiny}
-                        style={{ objectFit: "contain", width: "150px", height: "200px", margin: "0 auto" }}
-                        alt="green iguana"
-                      />
-                    </Link>
-                  </CardActionArea>
-                  <CardContent sx={{ pb: "3px" }}>
-                    <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
-                      { d.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Base_experience: { d.base_experience}
-                    </Typography>
-                  </CardContent>
-                  <CardActions sx={{ pb: "20px" }}>
-                  </CardActions>
-                </Card>
+              <Card key={d.id}>
+                <CardActionArea sx={{ bgcolor: "rgba(128, 79, 79, 0.1)" }} onClick={(e) => { e.preventDefault(); pokemonsDetailsHandler(d) }}>
+                  <Link to="/pokemonDescription">
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={d.sprites.front_shiny}
+                      style={{ objectFit: "contain", width: "150px", height: "200px", margin: "0 auto" }}
+                      alt="green iguana"
+                    />
+                  </Link>
+                </CardActionArea>
+                <CardContent sx={{ pb: "3px" }}>
+                  <Typography sx={{ textTransform: "capitalize " }} gutterBottom variant="h5" component="div">
+                    {d.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Base_experience: {d.base_experience}
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ pb: "20px" }}>
+                </CardActions>
+              </Card>
             )
-          }):""}
-          
-          </Box>
+          }) : ""}
+
+        </Box>
       </Container>
     </>
   )

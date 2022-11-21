@@ -7,11 +7,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 
 // importing MUI components
-import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions } from "@mui/material";
+import { Container, Grid, Card, CardContent, CardMedia, Typography, Button, CardActionArea, CardActions, Tooltip } from "@mui/material";
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 
 //importing actions
-import { AddToHeart, pokemonsDetails,pokemonComparition } from '../redux/actions';
+import { AddToHeart, pokemonsDetails, pokemonComparition } from '../redux/actions';
 
 
 export default function MainSection() {
@@ -30,8 +30,10 @@ export default function MainSection() {
 
     return (
         <>
-            <Container sx={{ mt: "100px" }}>
-                <Link to="ComparitionPage"><CompareArrowsIcon /></Link>
+            <Container sx={{ mt: "90px" }}>
+                <Tooltip title="Compare" placement="top-end">
+                    <Link to="ComparitionPage"><CompareArrowsIcon /></Link>
+                </Tooltip>
                 <Grid container>
                     {getPokemonData.map((data) => {
                         return (
@@ -68,7 +70,7 @@ export default function MainSection() {
                                             bgcolor: "#000", fontSize: "11px", fontWeight: "700", height: "33px", width: "100px", color: "#fff", ':hover': {
                                                 bgcolor: '#212121',
                                             },
-                                        }} onClick={(e) => { e.preventDefault(); pokemonComparitionHandler(data)}} size="small" color="primary">
+                                        }} onClick={(e) => { e.preventDefault(); pokemonComparitionHandler(data) }} size="small" color="primary">
                                             Compare
                                         </Button>
                                     </CardActions>
